@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Portal - InnovationBridge AI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .portal-header { background: #111; color: #fff; padding: 2rem; text-align: center; margin-bottom: 2rem; }
+        .filter-bar { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; align-items: center; }
+        .filter-bar select { width: auto; min-width: 250px; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
+        .modal-content { background: #fff; padding: 2rem; border-radius: 8px; max-width: 500px; width: 100%; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo" style="text-decoration: none;">InnovationBridge AI</a>
+            <span style="font-weight: bold; color: #666;">Industry Acquisition Portal</span>
+        </nav>
+    </header>
+
+    <div class="portal-header">
+        <h1>AI Sector-Matching Engine</h1>
+        <p>Select your operational industry to discover highly-rated, commercial-ready innovations.</p>
+    </div>
+
+    <main class="container" style="max-width: 1200px;">
+        <div class="filter-bar">
+            <label for="industry-select"><strong>My Company Sector:</strong></label>
+            <select id="industry-select">
+                <option value="Agriculture">Agriculture</option> <!-- Default test -->
+                <option value="Healthcare">Healthcare</option>
+                <option value="Education">Education</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Sustainability">Sustainability</option>
+                <option value="Energy">Energy</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Technology">Technology</option>
+            </select>
+            <button id="refresh-matches" class="primary-btn">Find Matches</button>
+        </div>
+
+        <section id="match-results" class="innovations-grid">
+            <!-- AI matched cards injected here -->
+        </section>
+    </main>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <h2>Innovator Contact Unlocked!</h2>
+            <p>We have notified the innovator that your company is interested.</p>
+            <div id="contact-info" style="margin: 1.5rem 0; text-align: left; background: #f4f4f4; padding: 1rem; border-radius: 4px;"></div>
+            <button onclick="document.getElementById('contact-modal').style.display='none'" class="primary-btn">Close</button>
+        </div>
+    </div>
+
+    <script src="js/company-dashboard.js"></script>
+</body>
+</html>

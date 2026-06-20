@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Command Center - InnovationBridge AI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .admin-layout { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+        .sidebar { background: #333; color: white; padding: 2rem 1rem; }
+        .sidebar h2 { color: #fff; margin-bottom: 2rem; font-size: 1.2rem; border-bottom: 1px solid #555; padding-bottom: 1rem; }
+        .nav-item { display: block; padding: 10px; color: #ccc; text-decoration: none; margin-bottom: 10px; border-radius: 4px; cursor: pointer; }
+        .nav-item:hover, .nav-item.active { background: var(--primary); color: white; }
+        
+        .admin-content { padding: 2rem; background: #f4f7f6; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: center; }
+        .stat-card h3 { font-size: 2rem; margin: 0; color: var(--primary); }
+        .stat-card p { margin: 5px 0 0; color: #666; font-size: 0.9rem; font-weight: bold; }
+        
+        .data-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .data-table th, .data-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #eee; }
+        .data-table th { background: #eef2f5; font-weight: 600; color: #333; }
+        .action-btn { padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem; margin-right: 5px; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-danger { background: #dc3545; color: white; }
+        .btn-warning { background: #ffc107; color: #333; }
+    </style>
+</head>
+<body class="admin-layout">
+    
+    <aside class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <a class="nav-item active" onclick="switchTab('overview')">Overview</a>
+        <a class="nav-item" onclick="switchTab('verifications')">Pending Verifications</a>
+        <a class="nav-item" onclick="switchTab('moderation')">AI Flagged Projects</a>
+        <a href="index.html" class="nav-item" style="margin-top: 2rem; background: #555; text-align: center;">Back to Site</a>
+    </aside>
+
+    <main class="admin-content">
+        <section id="tab-overview">
+            <h1>Platform Metrics</h1>
+            <div class="stats-grid">
+                <div class="stat-card"><h3 id="stat-users">0</h3><p>Total Users</p></div>
+                <div class="stat-card"><h3 id="stat-pending">0</h3><p>Pending Verifications</p></div>
+                <div class="stat-card"><h3 id="stat-innovations">0</h3><p>Total Innovations</p></div>
+                <div class="stat-card"><h3 id="stat-flagged">0</h3><p>AI Flagged / Risk</p></div>
+            </div>
+        </section>
+
+        <section id="tab-verifications" class="hidden">
+            <h1>User Verifications</h1>
+            <p>Review and verify companies and innovators.</p>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="verifications-table-body">
+                    </tbody>
+            </table>
+        </section>
+
+        <section id="tab-moderation" class="hidden">
+            <h1>AI Flagged Projects</h1>
+            <p>Projects with low scores or high similarity (copyright risk)[cite: 240].</p>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Project Title</th>
+                        <th>Innovator</th>
+                        <th>AI Score</th>
+                        <th>Similarity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="moderation-table-body">
+                    </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovation Details - InnovationBridge AI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific styles for the detail page */
+        .detail-header { text-align: center; margin-bottom: 2rem; }
+        .badge { background: var(--primary); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; }
+        .grid-2-col { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+        .score-item { display: flex; justify-content: space-between; margin-bottom: 0.5rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
+        .media-gallery img { max-width: 100%; border-radius: 8px; margin-bottom: 1rem; }
+        .action-card { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo" style="text-decoration: none;">InnovationBridge AI</a>
+        </nav>
+    </header>
+
+    <main class="container" id="detail-container">
+        <p style="text-align: center;">Loading AI Analysis...</p>
+    </main>
+
+    <!-- Funding Modal Overlay -->
+    <div id="funding-modal" class="modal">
+        <div class="modal-content" style="max-width: 420px; text-align: center;">
+            <h2>Support This Innovation</h2>
+            <p style="color: #666; font-size:0.9rem;">Choose a backing tier or enter your own custom amount.</p>
+            
+            <div style="display: flex; gap: 10px; justify-content: center; margin: 1.5rem 0;">
+                <button type="button" class="amount-btn" onclick="selectTier(100)">₹100</button>
+                <button type="button" class="amount-btn" onclick="selectTier(500)">₹500</button>
+                <button type="button" class="amount-btn" onclick="selectTier(1000)">₹1000</button>
+            </div>
+
+            <div style="margin-bottom: 1.5rem; text-align: left;">
+                <label for="custom-funding" style="font-size: 0.85rem;">Or enter custom amount (₹):</label>
+                <input type="number" id="custom-funding" placeholder="E.g. 5000" oninput="clearPresetTier()">
+            </div>
+
+            <div style="margin-bottom: 1.5rem; text-align: left;">
+                <input type="text" id="funder-name" placeholder="Your Full Name (Required)" required style="margin-bottom:10px;">
+                <input type="email" id="funder-email" placeholder="Your Email Address (Required)" required>
+            </div>
+
+            <button class="primary-btn" onclick="initiateRazorpay()" style="width: 100%;">Pay Securely via Razorpay</button>
+            <button onclick="document.getElementById('funding-modal').style.display='none'" style="width: 100%; background: #eee; color: #333; margin-top: 10px;">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Official Razorpay V1 Checkout SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script src="js/innovation.js"></script>
+</body>
+</html>
